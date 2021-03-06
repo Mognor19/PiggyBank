@@ -22,7 +22,7 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Start" component={Login} />
       <Stack.Screen name="Home" component={MyTabs} />
       <Stack.Screen name="Recover" component={Recover} />
