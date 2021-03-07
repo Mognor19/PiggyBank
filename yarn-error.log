@@ -1,0 +1,69 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\nahum\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add firevbase
+
+PATH: 
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python38\Scripts\;C:\Python38\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Users\nahum\AppData\Local\Microsoft\WindowsApps;C:\Users\nahum\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\nahum\AppData\Roaming\npm;C:\Users\nahum\AppData\Local\GitHubDesktop\bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  12.18.4
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/firevbase: Not found
+      at Request.params.callback [as _callback] (C:\Users\nahum\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
+      at Request.self.callback (C:\Users\nahum\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (C:\Users\nahum\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (C:\Users\nahum\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1220:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@react-native-masked-view/masked-view": "^0.2.2",
+      "@react-navigation/bottom-tabs": "^5.11.8",
+      "@react-navigation/native": "^5.9.3",
+      "@react-navigation/stack": "^5.14.3",
+      "email-validator": "^2.0.4",
+      "expo": "~40.0.0",
+      "expo-status-bar": "~1.0.3",
+      "react": "16.13.1",
+      "react-dom": "16.13.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+      "react-native-elements": "^3.2.0",
+      "react-native-gesture-handler": "~1.8.0",
+      "react-native-reanimated": "~1.13.0",
+      "react-native-safe-area-context": "3.1.9",
+      "react-native-screens": "~2.15.2",
+      "react-native-vector-icons": "^8.1.0",
+      "react-native-web": "~0.13.12",
+      "expo-constants": "~9.3.3"
+    },
+    "devDependencies": {
+      "@babel/core": "~7.9.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from './src/components/screen/Login';
 import ExpenseList from './src/components/screen/ExpenseList'
+import Recover from './src/screen/Recover'
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name="Login" component={Login} initialParams={{ userCreated: false }}/>
+        <Stack.Screen name="Recover" component={Recover} />
         <Stack.Screen name="Home" component={MyTabs} />
       </Stack.Navigator>
     </NavigationContainer>

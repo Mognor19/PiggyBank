@@ -9,10 +9,18 @@ npm-debug.*
 *.orig.*
 web-build/
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Recover
 # macOS
 .DS_Store
 
 #dependencies
 *.txt
+<<<<<<< HEAD
+=======
+*.png
+>>>>>>> Recover
 
 enviroment.js
