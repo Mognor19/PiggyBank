@@ -7,11 +7,11 @@ import Alert from '../shared/Alert';
 
 const { width, height } = Dimensions.get("screen");
 
-const Login = ({ navigation, userCreated }) => {
+const Login = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Logo title="Login" />
-            {userCreated ? (<Alert type="success" title="Your user was created successfully!" />) : null}
+            {/* {userCreated ? (<Alert type="success" title="User created!" />) : null} */}
             <LoginForm navigation={navigation}/>
             
             <TouchableOpacity
@@ -22,7 +22,7 @@ const Login = ({ navigation, userCreated }) => {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.create}
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.navigate('SignUp')}
             >
                 <Text>Dont have an account? <Text style={styles.register}>Register Now</Text></Text>
             </TouchableOpacity>
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     create:{
-        justifyContent:'flex-end',
+        position:'absolute',
+        bottom:25,
         alignSelf:'center',
         padding: 5,
     },

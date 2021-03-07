@@ -58,8 +58,7 @@ const LoginForm = ({navigation}) => {
     <View>
       {error ? <Alert title={error} type="error" /> : null}
       <Input
-        style={styles.inputText}
-        containerStyle={{paddingHorizontal:width*0.10, }}
+        containerStyle={{paddingHorizontal:width*0.20}}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
@@ -69,13 +68,12 @@ const LoginForm = ({navigation}) => {
         }}
         errorMessage={
           emailError
-            ? "Please type in your email address"
+            ? "Por favor ingresa tu cuenta de correo electrónico"
             : null
         }
       />
       <Input
-        style={styles.inputText}
-        containerStyle={{paddingHorizontal:width*0.10}}
+        containerStyle={{paddingHorizontal:width*0.20}}
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
@@ -84,7 +82,7 @@ const LoginForm = ({navigation}) => {
         onBlur={() => {
           handleVerify("password");
         }}
-        errorMessage={passwordError ? "Please type in your password" : null}
+        errorMessage={passwordError ? "Por favor ingresa tu contraseña" : null}
       />
       <TouchableOpacity
         style={styles.login}
@@ -106,9 +104,6 @@ const styles = StyleSheet.create({
   loginText:{
     alignSelf:'center',
     fontSize:18,
-  },
-  inputText:{
-    fontSize:16,
   },
 });
 
