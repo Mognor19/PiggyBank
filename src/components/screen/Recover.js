@@ -56,19 +56,22 @@ const Recover = ({ navigation }) => {
             >
                 <Text>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
             </TouchableOpacity>
+            {/* Success Message of the password recovery message */}
             <Overlay isVisible={visible} overlayStyle={styles.overlay} >
-                <Logo title="Success"/>
-                <Text style={styles.successMessage}>A password recovery message was sent to the email you provided.</Text>
-                <Text style={styles.hintMessage}>If you are unable to find it please do check you Junk/Spam folder.</Text>
-                <TouchableOpacity
-                    style={styles.overlayButton}
-                    onPress={() => {
-                        navigation.navigate('Login')
-                        setVisible(!visible)
-                    }}
-                >
-                    <Text style={styles.overlayButtonText}>Okay</Text>
-                </TouchableOpacity>
+                <View>
+                    <Logo title="Success"/>
+                    <Text style={styles.successMessage}>A password recovery message was sent to the email you provided.</Text>
+                    <Text style={styles.hintMessage}>If you are unable to find it please do check you Junk/Spam folder.</Text>
+                    <TouchableOpacity
+                        style={styles.overlayButton}
+                        onPress={() => {
+                            navigation.navigate('Login')
+                            setVisible(!visible)
+                        }}
+                    >
+                        <Text style={styles.overlayButtonText}>Okay</Text>
+                    </TouchableOpacity>
+                </View>
             </Overlay> 
         </View>
     )
@@ -92,14 +95,10 @@ const styles = StyleSheet.create({
     Text:{
         color: theme.colors.gold,
     },
-    logo:{
-        width: width * 0.9,
-        height: width * 0.5,
-        margin: 10,
-    },
     input:{
+        fontSize:18,
         color: theme.colors.dark,
-        paddingTop:height*0.10,
+        paddingTop:height*0.1
     },
     goBack:{
         alignSelf:'center',
