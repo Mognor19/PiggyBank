@@ -16,7 +16,7 @@ const Login = ({ navigation, userCreated }) => {
             
             <TouchableOpacity
                 style={styles.forgot}
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.navigate('Recover')}
             >
                 <Text>Forgot your password?</Text>
             </TouchableOpacity>

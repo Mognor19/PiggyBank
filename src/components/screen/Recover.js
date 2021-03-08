@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions} from 'react-native';
-import { Image } from "react-native-elements";
+import Logo from '../shared/Logo'
+import { firebase } from "../../firebase";
 const {width, height} = Dimensions.get("screen");
 import theme from '../theme/index'
 import { validate } from "email-validator";
@@ -18,14 +19,15 @@ const Recover = ({ navigation }) => {
           else if (!validate(email)) setEmailError(true);
           else setEmailError(false);
         }
-      };
+    };
+    const handleRecover = () => {
+        (email!="" ? firebase.auth().sendPasswordResetEmail(email) : null)
+    }
+
     return (
         <View style={styles.container}>
             {error ? <Alert title={error} type="error" /> : null}
-            <Image
-                style={styles.logo}
-                source={require('../assets/LogoPiggyBankSinCoin.png')}
-            />
+            <Logo title="Recover Password"/>
             <Input
                 style={styles.input}
                 containerStyle={{paddingHorizontal:width*0.10}}
@@ -37,28 +39,13 @@ const Recover = ({ navigation }) => {
                 }}
                 errorMessage={
                     emailError
-                    ? "Por favor ingresa tu cuenta de correo electrónico"
+                    ? "Please verify your accounts email address"
                     : null
                 }
             />
-
-            <Input 
-                style={styles.input}
-                containerStyle={{paddingHorizontal:width*0.10}}
-                placeholder="Nueva Contraseña"
-                
-            />
-
-            <Input 
-                style={styles.input}
-                containerStyle={{paddingHorizontal:width*0.10}}
-                placeholder="Confirmar Contraseña"
-                
-            />
-            
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate('Recover')}
+                onPress={handleRecover(email)}
             >
                 <Text style={styles.Text}>Actualizar</Text>
             </TouchableOpacity>            
@@ -78,6 +65,7 @@ const styles = StyleSheet.create({
         width: width * 0.8,
         height: width *0.075,
         padding: 5,
+        marginTop:height*0.03,
         backgroundColor:theme.colors.blue,
     },
     Text:{
@@ -90,6 +78,7 @@ const styles = StyleSheet.create({
     },
     input:{
         color: theme.colors.dark,
+        paddingTop:height*0.10,
     }
 });
 

@@ -20,17 +20,19 @@ const Logo = ({title}) => {
 const styles = StyleSheet.create({
   container: {
     alignSelf: "center",
+    alignItems:'center',
     justifyContent:'center',
-    paddingBottom:50,
   },
   logo: {
     width: width * 0.6,
     height: height * 0.25,
+    padding:height*0.06,
     resizeMode: "contain",
+    alignSelf:'center'
   },
   logoTitle:{
     alignSelf:'center',
-    fontSize:40,
+    fontSize:height*0.04,
     fontWeight:'bold',
     color:theme.colors.dark,
   },

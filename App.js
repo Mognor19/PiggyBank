@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from './src/components/screen/Login';
 import ExpenseList from './src/components/screen/ExpenseList'
-import Recover from './src/screen/Recover'
+import Recover from './src/components/screen/Recover'
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
