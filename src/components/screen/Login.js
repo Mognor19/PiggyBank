@@ -20,7 +20,7 @@ const Login = ({ navigation, userCreated }) => {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.create}
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.navigate('SignUp')}
             >
                 <Text>Dont have an account? <Text style={styles.register}>Register Now</Text></Text>
             </TouchableOpacity>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     create:{
         justifyContent:'flex-end',
         alignSelf:'center',
-        padding: 5,
+        padding: 10,
     },
     register:{
         color:theme.colors.red,

@@ -6,12 +6,13 @@ const {width, height} = Dimensions.get("screen");
 import theme from '../theme/index'
 import { validate } from "email-validator";
 import Alert from '../shared/Alert'
-import { Input} from "react-native-elements";
+import { Input, Overlay} from "react-native-elements";
 
 const Recover = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState(false);
     const [error, setError] = useState("");
+    const [visible, setVisible] = useState(false);
 
     const handleVerify = (input) => {
         if (input === "email") {
@@ -29,6 +30,7 @@ const Recover = ({ navigation }) => {
                 style={styles.input}
                 containerStyle={{paddingHorizontal:width*0.10}}
                 placeholder="Email"
+                autoCapitalize="none"
                 value={email}
                 onChangeText={setEmail}
                 onBlur={() => {
@@ -43,7 +45,7 @@ const Recover = ({ navigation }) => {
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
-                    firebase.auth().sendPasswordResetEmail(email).catch((error) => {setError(error.message)})
+                    firebase.auth().sendPasswordResetEmail(email).then(()=>{setVisible(!visible)}).catch((error) => {setError(error.message)})
                 }}
             >
                 <Text style={styles.Text}>Verify</Text>
@@ -53,7 +55,21 @@ const Recover = ({ navigation }) => {
                 onPress={() => navigation.navigate('Login')}
             >
                 <Text>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
-            </TouchableOpacity>       
+            </TouchableOpacity>
+            <Overlay isVisible={visible} overlayStyle={styles.overlay} >
+                <Logo title="Success"/>
+                <Text style={styles.successMessage}>A password recovery message was sent to the email you provided.</Text>
+                <Text style={styles.hintMessage}>If you are unable to find it please do check you Junk/Spam folder.</Text>
+                <TouchableOpacity
+                    style={styles.overlayButton}
+                    onPress={() => {
+                        navigation.navigate('Login')
+                        setVisible(!visible)
+                    }}
+                >
+                    <Text style={styles.overlayButtonText}>Okay</Text>
+                </TouchableOpacity>
+            </Overlay> 
         </View>
     )
 }
@@ -93,6 +109,38 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         color:theme.colors.red,
     },
+    successMessage:{
+        fontWeight:'bold',
+        fontSize: 18,
+        color:theme.colors.dark,
+    },
+    hintMessage:{
+        fontWeight:'bold',
+        paddingTop:15,
+        fontSize: 18,
+        color:theme.colors.dark,
+    },
+    overlay:{
+        width:width*0.8,
+        height:height*0.7,
+        backgroundColor:theme.colors.grey,
+        paddingLeft:width*0.08,
+        paddingRight:width*0.08,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    overlayButton:{
+        alignItems:'center',
+        justifyContent:'center',
+        width: width * 0.6,
+        height: width *0.13,
+        padding: 5,
+        marginTop:height*0.03,
+        backgroundColor:theme.colors.blue,
+    },
+    overlayButtonText:{
+        fontSize:30,
+    }
 });
 
 export default Recover;

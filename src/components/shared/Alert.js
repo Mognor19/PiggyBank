@@ -8,27 +8,25 @@ const { width} = Dimensions.get("screen");
 const Alert = ({ type, title }) => {
   let background = "";
   let icon = "";
-  let color=theme.colors.dark;
 
   if (type === "error") {
-    background = theme.colors.red;
-    icon = "meh";
+    background = "#fdecea";
+    icon = "times-circle";
   } else if (type === "warning") {
-    background = theme.colors.dark;
-    color=theme.colors.gold;
-    icon = "alert-triangle";
+    background = "#fff4e5";
+    icon = "warning";
   } else if (type === "info") {
     background = "#e8f4fd";
-    icon = "info";
+    icon = "info-circle";
   } else if (type === "success") {
     background = "#edf7ed";
-    icon = "x-circle";
+    icon = "check-circle";
   }
 
   return (
     <View style={[styles.container, { backgroundColor: background, opacity:0.9}]}>
       <Icon name={icon} style={styles.icon} />
-      <Text style={{color:color,}}>{title}</Text>
+      <Text>{title}</Text>
     </View>
   );
 };
