@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { color } from "react-native-reanimated";
+import { StyleSheet, View, Text, Dimensions} from "react-native";
 import Icon from "@expo/vector-icons/Feather";
 import theme from '../theme'
+
+const { width} = Dimensions.get("screen");
 
 const Alert = ({ type, title }) => {
   let background = "";
@@ -25,7 +26,7 @@ const Alert = ({ type, title }) => {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: background }]}>
+    <View style={[styles.container, { backgroundColor: background, opacity:0.9}]}>
       <Icon name={icon} style={styles.icon} />
       <Text style={{color:color,}}>{title}</Text>
     </View>
@@ -34,12 +35,16 @@ const Alert = ({ type, title }) => {
 
 const styles = StyleSheet.create({
   container: {
+    width:width*0.9,
     margin: 10,
     padding: 10,
     flexDirection: "row",
   },
   icon: {
     marginRight: 10,
+    fontSize:26,
+    paddingTop:'auto',
+    paddingBottom:'auto',
   },
 });
 

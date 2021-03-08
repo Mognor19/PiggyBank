@@ -1,11 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import LoginForm from "../forms/LoginForm";
 import theme from "../theme";
 import Logo from '../shared/Logo';
 import Alert from '../shared/Alert';
-
-const { width, height } = Dimensions.get("screen");
 
 const Login = ({ navigation, userCreated }) => {
     return (

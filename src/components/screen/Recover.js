@@ -5,7 +5,7 @@ import { firebase } from "../../firebase";
 const {width, height} = Dimensions.get("screen");
 import theme from '../theme/index'
 import { validate } from "email-validator";
-
+import Alert from '../shared/Alert'
 import { Input} from "react-native-elements";
 
 const Recover = ({ navigation }) => {
@@ -20,14 +20,11 @@ const Recover = ({ navigation }) => {
           else setEmailError(false);
         }
     };
-    const handleRecover = () => {
-        (email!="" ? firebase.auth().sendPasswordResetEmail(email) : null)
-    }
 
     return (
         <View style={styles.container}>
-            {error ? <Alert title={error} type="error" /> : null}
             <Logo title="Recover Password"/>
+            {error ? <Alert title={error} type="error" /> : null}
             <Input
                 style={styles.input}
                 containerStyle={{paddingHorizontal:width*0.10}}
@@ -45,10 +42,18 @@ const Recover = ({ navigation }) => {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={handleRecover(email)}
+                onPress={() => {
+                    firebase.auth().sendPasswordResetEmail(email).catch((error) => {setError(error.message)})
+                }}
             >
-                <Text style={styles.Text}>Actualizar</Text>
-            </TouchableOpacity>            
+                <Text style={styles.Text}>Verify</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.goBack}
+                onPress={() => navigation.navigate('Login')}
+            >
+                <Text>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
+            </TouchableOpacity>       
         </View>
     )
 }
@@ -79,7 +84,15 @@ const styles = StyleSheet.create({
     input:{
         color: theme.colors.dark,
         paddingTop:height*0.10,
-    }
+    },
+    goBack:{
+        alignSelf:'center',
+        padding:8,
+    },
+    goBackText:{
+        alignSelf:'center',
+        color:theme.colors.red,
+    },
 });
 
 export default Recover;
