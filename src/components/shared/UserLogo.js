@@ -5,12 +5,12 @@ import theme from '../theme';
 
 const { width, height } = Dimensions.get("screen");
 
-const Logo = ({title}) => {
+const UserLogo = ({title}) => {
   return (
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={require('../../../assets/LogoPiggyBankNoCoin.png')}
+        source={require('../../../assets/user.png')}
       />
       <Text style={styles.logoTitle}>{title}</Text>
     </View>
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Logo;
+export default UserLogo;
