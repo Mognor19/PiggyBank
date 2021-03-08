@@ -9,21 +9,18 @@ npm-debug.*
 *.orig.*
 web-build/
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Recover
 # macOS
 .DS_Store
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #dependencies
 *.txt
-<<<<<<< HEAD
 =======
+
+#dependencies
+*.txt
 *.png
->>>>>>> Recover
+
 
 enviroment.js
-=======
->>>>>>> origin/SignUp

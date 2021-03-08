@@ -8,14 +8,33 @@ import Login from './src/components/screen/Login';
 import ExpenseList from './src/components/screen/ExpenseList'
 import Recover from './src/components/screen/Recover'
 import SignUp from './src/components/screen/SignUp'
+import theme from './src/components/theme'
+import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function MyTabs() {
+  let color = theme.colors.dark
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home"  component={ExpenseList} />
+    <Tab.Navigator tabBarOptions={{
+      showLabel:false, 
+      activeBackgroundColor:theme.colors.dark, 
+      activeTintColor:theme.colors.gold,
+      inactiveBackgroundColor:theme.colors.dark,
+      inactiveTintColor:theme.colors.grey,
+      }}>
+      <Tab.Screen name="Home" component={ExpenseList} options={{
+        tabBarIcon: ({ color, size }) => (
+          <Feather name="home" size={size} color={color} />
+        ),
+      }} 
+      />
+      <Tab.Screen name="User" component={ExpenseList} options={{
+        tabBarIcon: ({ color, size }) => (
+          <Feather name="user" size={size} color={color} />
+        ),
+      }}/>
     </Tab.Navigator>
   );
 }
