@@ -5,6 +5,7 @@ import { firebase } from "../../firebase";
 import { validate } from "email-validator";
 import theme from '../theme'
 import Alert from '../shared/Alert';
+import PopUpMessage from '../shared/PopUpMessage';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -18,6 +19,10 @@ const SignupForm = ({ navigation }) => {
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [error, setError] = useState("");
+  const [visible, setVisible] = useState(false);
+  const logoTitle ="Success"
+  const successMessage = "Your account was created successfully."
+  const hintMessage = "Now try logging in for the first time."
 
   const handleVerify = (input) => {
     if (input === "fullname") {
@@ -54,7 +59,7 @@ const SignupForm = ({ navigation }) => {
           .doc(uid)
           .set(data)
           .then(() => {
-            navigation.navigate("Login");
+            setVisible(!visible)
           })
           .catch((error) => {
             console.log(error);
@@ -73,7 +78,6 @@ const SignupForm = ({ navigation }) => {
         placeholder="Full name"
         value={fullname}
         onChangeText={setFullname}
-        autoCapitalize="none"
         onBlur={() => {
           handleVerify("fullname");
         }}
@@ -133,6 +137,7 @@ const SignupForm = ({ navigation }) => {
       >
         <Text style={styles.signUpText}>Sign up</Text>
       </TouchableOpacity>
+      <PopUpMessage navigation={navigation} navigationScreen="Login" visibleState={visible} logoTitle={logoTitle} successMessage={successMessage} hintMessage={hintMessage} />
     </View>
   );
 };

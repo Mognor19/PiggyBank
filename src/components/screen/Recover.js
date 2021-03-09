@@ -6,13 +6,17 @@ const {width, height} = Dimensions.get("screen");
 import theme from '../theme/index'
 import { validate } from "email-validator";
 import Alert from '../shared/Alert'
-import { Input, Overlay} from "react-native-elements";
+import { Input } from "react-native-elements";
+import PopUpMessage from '../shared/PopUpMessage';
 
 const Recover = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState(false);
     const [error, setError] = useState("");
     const [visible, setVisible] = useState(false);
+    const logoTitle ="Success"
+    const successMessage = "A password recovery message was sent to the email you provided."
+    const hintMessage = "If you are unable to find it please do check your Junk/Spam folder."
 
     const handleVerify = (input) => {
         if (input === "email") {
@@ -57,22 +61,7 @@ const Recover = ({ navigation }) => {
                 <Text>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
             </TouchableOpacity>
             {/* Success Message of the password recovery email */}
-            <Overlay isVisible={visible} overlayStyle={styles.overlay} >
-                <View>
-                    <Logo title="Success"/>
-                    <Text style={styles.successMessage}>A password recovery message was sent to the email you provided.</Text>
-                    <Text style={styles.hintMessage}>If you are unable to find it please do check your Junk/Spam folder.</Text>
-                    <TouchableOpacity
-                        style={styles.overlayButton}
-                        onPress={() => {
-                            navigation.navigate('Login')
-                            setVisible(!visible)
-                        }}
-                    >
-                        <Text style={styles.overlayButtonText}>Okay</Text>
-                    </TouchableOpacity>
-                </View>
-            </Overlay> 
+            <PopUpMessage navigation={navigation} navigationScreen="Login" visibleState={visible} logoTitle={logoTitle} successMessage={successMessage} hintMessage={hintMessage} />
         </View>
     )
 }
@@ -108,38 +97,6 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         color:theme.colors.red,
     },
-    successMessage:{
-        fontWeight:'bold',
-        fontSize: 18,
-        color:theme.colors.dark,
-    },
-    hintMessage:{
-        fontWeight:'bold',
-        paddingTop:15,
-        fontSize: 18,
-        color:theme.colors.dark,
-    },
-    overlay:{
-        width:width*0.8,
-        height:height*0.7,
-        backgroundColor:theme.colors.grey,
-        paddingLeft:width*0.08,
-        paddingRight:width*0.08,
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    overlayButton:{
-        alignItems:'center',
-        justifyContent:'center',
-        width: width * 0.6,
-        height: width *0.13,
-        padding: 5,
-        marginTop:height*0.03,
-        backgroundColor:theme.colors.blue,
-    },
-    overlayButtonText:{
-        fontSize:30,
-    }
 });
 
 export default Recover;
