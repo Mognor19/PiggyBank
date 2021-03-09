@@ -3,13 +3,11 @@ import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import LoginForm from "../forms/LoginForm";
 import theme from "../theme";
 import Logo from '../shared/Logo';
-import Alert from '../shared/Alert';
 
-const Login = ({ navigation, userCreated }) => {
+const Login = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Logo title="Login" />
-            {userCreated ? (<Alert type="success" title="Your user was created successfully!" />) : null}
             <LoginForm navigation={navigation}/>
             
             <TouchableOpacity

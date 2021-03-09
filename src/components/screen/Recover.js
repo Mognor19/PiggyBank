@@ -25,6 +25,17 @@ const Recover = ({ navigation }) => {
           else setEmailError(false);
         }
     };
+    const handleRecovery = () =>{
+        firebase
+            .auth()
+            .sendPasswordResetEmail(email)
+            .then(()=>{
+                setVisible(!visible)
+            })
+            .catch((error) => {
+                setError(error.message)
+            })
+    }
 
     return (
         <View style={styles.container}>
@@ -48,9 +59,7 @@ const Recover = ({ navigation }) => {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => {
-                    firebase.auth().sendPasswordResetEmail(email).then(()=>{setVisible(!visible)}).catch((error) => {setError(error.message)})
-                }}
+                onPress={handleRecovery}
             >
                 <Text style={styles.text}>Verify</Text>
             </TouchableOpacity>
@@ -61,7 +70,13 @@ const Recover = ({ navigation }) => {
                 <Text>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
             </TouchableOpacity>
             {/* Success Message of the password recovery email */}
-            <PopUpMessage navigation={navigation} navigationScreen="Login" visibleState={visible} logoTitle={logoTitle} successMessage={successMessage} hintMessage={hintMessage} />
+            <PopUpMessage 
+                navigation={navigation} 
+                navigationScreen="Login" 
+                visibleState={visible} 
+                logoTitle={logoTitle} 
+                successMessage={successMessage} 
+                hintMessage={hintMessage} />
         </View>
     )
 }

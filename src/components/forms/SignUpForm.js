@@ -137,7 +137,13 @@ const SignupForm = ({ navigation }) => {
       >
         <Text style={styles.signUpText}>Sign up</Text>
       </TouchableOpacity>
-      <PopUpMessage navigation={navigation} navigationScreen="Login" visibleState={visible} logoTitle={logoTitle} successMessage={successMessage} hintMessage={hintMessage} />
+      <PopUpMessage 
+        navigation={navigation} 
+        navigationScreen="Login" 
+        visibleState={visible} 
+        logoTitle={logoTitle} 
+        successMessage={successMessage} 
+        hintMessage={hintMessage} />
     </View>
   );
 };
