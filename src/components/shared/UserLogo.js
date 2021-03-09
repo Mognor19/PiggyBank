@@ -20,11 +20,6 @@ const UserLogo = ({title}) => {
       />
       </View>
       <br></br>
-      <Image
-        style={styles.logo}
-        source={require('../../../assets/LogoPiggyBankNoCoin.png')}
-      />
-      <br></br>
     </View>
   );
 };
