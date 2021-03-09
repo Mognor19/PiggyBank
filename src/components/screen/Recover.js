@@ -48,7 +48,7 @@ const Recover = ({ navigation }) => {
                     firebase.auth().sendPasswordResetEmail(email).then(()=>{setVisible(!visible)}).catch((error) => {setError(error.message)})
                 }}
             >
-                <Text style={styles.Text}>Verify</Text>
+                <Text style={styles.text}>Verify</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.goBack}
@@ -56,12 +56,12 @@ const Recover = ({ navigation }) => {
             >
                 <Text>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
             </TouchableOpacity>
-            {/* Success Message of the password recovery message */}
+            {/* Success Message of the password recovery email */}
             <Overlay isVisible={visible} overlayStyle={styles.overlay} >
                 <View>
                     <Logo title="Success"/>
                     <Text style={styles.successMessage}>A password recovery message was sent to the email you provided.</Text>
-                    <Text style={styles.hintMessage}>If you are unable to find it please do check you Junk/Spam folder.</Text>
+                    <Text style={styles.hintMessage}>If you are unable to find it please do check your Junk/Spam folder.</Text>
                     <TouchableOpacity
                         style={styles.overlayButton}
                         onPress={() => {
@@ -87,13 +87,13 @@ const styles = StyleSheet.create({
     button:{
         alignItems:'center',
         width: width * 0.8,
-        height: width *0.075,
-        padding: 5,
+        padding: 8,
         marginTop:height*0.03,
         backgroundColor:theme.colors.blue,
     },
-    Text:{
-        color: theme.colors.gold,
+    text:{
+        color: theme.colors.dark,
+        fontSize:18,
     },
     input:{
         fontSize:18,
