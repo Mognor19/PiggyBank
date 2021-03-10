@@ -14,11 +14,7 @@ web-build/
 
 #dependencies
 *.txt
-=======
 
-#dependencies
-*.txt
-*.png
 
 
 enviroment.js

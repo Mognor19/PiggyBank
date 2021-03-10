@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Dimensions, TouchableOpacity, Text} from "react-native";
+import { StyleSheet, View, Dimensions, TouchableOpacity, Text, Keyboard} from "react-native";
 import { Input} from "react-native-elements";
 import { validate } from "email-validator";
 import { firebase } from "../../firebase";
