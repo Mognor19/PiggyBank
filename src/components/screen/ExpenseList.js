@@ -40,7 +40,6 @@ const ExpenseList = () => {
     )
 }
 
-
 const styles = StyleSheet.create({
     container : {
         flex:1,
@@ -76,7 +75,6 @@ const styles = StyleSheet.create({
         margin:10,
         fontSize: 50,
     },
-    
 });
 
 export default ExpenseList;

@@ -9,7 +9,7 @@ import ExpenseList from './src/components/screen/ExpenseList'
 import Recover from './src/components/screen/Recover'
 import SignUp from './src/components/screen/SignUp'
 import theme from './src/components/theme'
-import SaveLogin from './src/utils/SaveLogin'
+import LogOut from './src/components/screen/LogOut';
 import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -31,7 +31,7 @@ function MyTabs() {
         ),
       }} 
       />
-      <Tab.Screen name="User" component={ExpenseList}  options={{
+      <Tab.Screen name="User" component={LogOut} options={{
         tabBarIcon: ({ color, size }) => (
           <Feather name="user" size={size} color={color} />
         ),
@@ -39,31 +39,16 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
-{/*initialParams={{ user: user }}*/}
+
 export default function App() {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const userData = SaveLogin();
-    setUser(userData);
-  }, []);
-
   return (
     <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown:false}}>
-        {user ? (
-          <Stack.Screen 
-            name="Home" 
-            component={MyTabs} 
-            />
-        ) : (
-          <>
-            <Stack.Screen name="Login" component={Login}/>
-            <Stack.Screen name="Recover" component={Recover} />
-            <Stack.Screen name="SignUp" component={SignUp} />
-          </>
-        )}
+          <Stack.Screen name="Login" component={Login}/>
+          <Stack.Screen name="Recover" component={Recover} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Home" component={MyTabs} />
       </Stack.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>

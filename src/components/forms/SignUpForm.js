@@ -59,6 +59,15 @@ const SignupForm = ({ navigation }) => {
           .doc(uid)
           .set(data)
           .then(() => {
+            setFullname("")
+            setEmail("")
+            setConfirmPassword("")
+            setPassword("")
+            setFullnameError("")
+            setEmailError("")
+            setConfirmPasswordError("")
+            setPasswordError("")
+            setError("")
             setVisible(!visible)
           })
           .catch((error) => {

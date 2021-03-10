@@ -41,6 +41,11 @@ const LoginForm = ({navigation}) => {
           .doc(uid)
           .set(data)
           .then(() => {
+            setEmail("")
+            setPassword("")
+            setEmailError(false)
+            setPasswordError(false)
+            setError("")
             navigation.navigate("Home");
           })
           .catch((error) => {

@@ -30,6 +30,9 @@ const Recover = ({ navigation }) => {
             .auth()
             .sendPasswordResetEmail(email)
             .then(()=>{
+                setEmail("")
+                setEmailError("")
+                setError("")
                 setVisible(!visible)
             })
             .catch((error) => {
