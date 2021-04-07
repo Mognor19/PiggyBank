@@ -1,19 +1,28 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Dimensions, TouchableOpacity, Text, Keyboard} from "react-native";
+import React, { useState, useEffect, useContext } from "react";
+import { StyleSheet, View, Dimensions, TouchableOpacity, Text} from "react-native";
 import { Input} from "react-native-elements";
 import { validate } from "email-validator";
-import { firebase } from "../../firebase";
 import theme from '../theme';
 import Alert from "../shared/Alert";
+import { Context as AuthContext } from "../providers/AuthContext";
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
-const LoginForm = ({navigation}) => {
+const LoginForm = () => {
+  const { state, signin, clearErrorMessage } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (state.errorMessage) clearErrorMessage();
+  }, []);
+
+  useEffect(() => {
+    if (state.errorMessage) setError(state.errorMessage);
+  }, [state.errorMessage]);
 
   const handleVerify = (input) => {
     if (input === "email") {
@@ -27,35 +36,7 @@ const LoginForm = ({navigation}) => {
   };
 
   const handleLogin = () => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((response) => {
-        const uid = response.user.uid;
-        const data = {
-          id: uid,
-          email,
-        };
-        const usersRef = firebase.firestore().collection("users");
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            setEmail("")
-            setPassword("")
-            setEmailError(false)
-            setPasswordError(false)
-            setError("")
-            navigation.navigate("Home");
-          })
-          .catch((error) => {
-            console.log(error);
-            setError(error.message);
-          });
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+    signin(email, password);
   };
 
   return (

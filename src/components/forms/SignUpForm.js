@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, View, Dimensions, TouchableOpacity, Text} from "react-native";
 import { Input } from "react-native-elements";
-import { firebase } from "../../firebase";
 import { validate } from "email-validator";
 import theme from '../theme'
 import Alert from '../shared/Alert';
-import PopUpMessage from '../shared/PopUpMessage';
+import { Context as AuthContext } from "../providers/AuthContext";
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
-const SignupForm = ({ navigation }) => {
+const SignupForm = () => {
+  const { state, signup } = useContext(AuthContext);
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +19,6 @@ const SignupForm = ({ navigation }) => {
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [error, setError] = useState("");
-  const [visible, setVisible] = useState(false);
-  const logoTitle ="Success"
-  const successMessage = "Your account was created successfully."
-  const hintMessage = "Now try logging in for the first time."
 
   const handleVerify = (input) => {
     if (input === "fullname") {
@@ -40,43 +36,33 @@ const SignupForm = ({ navigation }) => {
       if (!confirmPassword) setConfirmPasswordError(true);
       else if (confirmPassword !== password) setConfirmPasswordError(true);
       else setConfirmPasswordError(false);
+    } else if (input === "signup") {
+      if (
+        !fullnameError &&
+        !emailError &&
+        !passwordError &&
+        !confirmPasswordError &&
+        fullname &&
+        email &&
+        password &&
+        confirmPassword
+      ){
+        clean();
+        signup(fullname, email, password) 
+      }else setError("All fields are required!");
     }
   };
-
-  const handleSignup = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        const uid = response.user.uid;
-        const data = {
-          id: uid,
-          email,
-          fullname,
-        };
-        const usersRef = firebase.firestore().collection("users");
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            setFullname("")
-            setEmail("")
-            setConfirmPassword("")
-            setPassword("")
-            setFullnameError("")
-            setEmailError("")
-            setConfirmPasswordError("")
-            setPasswordError("")
-            setError("")
-            setVisible(!visible)
-          })
-          .catch((error) => {
-            console.log(error);
-            setError(error.message);
-          });
-      })
-      .catch((error) => setError(error.message));
-  };
+  const clean = () =>{
+    setFullname("")
+    setEmail("")
+    setConfirmPassword("")
+    setPassword("")
+    setFullnameError("")
+    setEmailError("")
+    setConfirmPasswordError("")
+    setPasswordError("")
+    setError("")
+  }
 
   return (
     <View>
@@ -142,17 +128,10 @@ const SignupForm = ({ navigation }) => {
       />
       <TouchableOpacity
         style={styles.signup}
-        onPress={handleSignup}
+        onPress={() => handleVerify("signup")}
       >
         <Text style={styles.signUpText}>Sign up</Text>
       </TouchableOpacity>
-      <PopUpMessage 
-        navigation={navigation} 
-        navigationScreen="Login" 
-        visibleState={visible} 
-        logoTitle={logoTitle} 
-        successMessage={successMessage} 
-        hintMessage={hintMessage} />
     </View>
   );
 };

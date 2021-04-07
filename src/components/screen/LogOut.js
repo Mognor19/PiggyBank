@@ -1,30 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { StyleSheet, View, Dimensions, Text, TouchableOpacity} from 'react-native';
 import UserForm from "../forms/UserForm";
 import theme from "../theme";
 import UserLogo from '../shared/UserLogo';
-import {firebase} from '../../firebase';
-import PopUpMessage from '../shared/PopUpMessage'
+import { Context as AuthContext } from "../providers/AuthContext";
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
 const LogOut = ({ navigation}) => {
-    const [visible, setVisible] = useState(false);
-    const logoTitle ="Goodbye"
-    const successMessage = "You have just logged out from Piggy Bank"
-    const hintMessage = "Hope to see you again soon!"
+    const { signout } = useContext(AuthContext);
     
     const handleLogOut = () => {
-        firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            setVisible(!visible)
-          })
-          .catch((error) => {
-            setError(error.message);
-          });
-      };
+        signout();
+    };
     return (
         <View style={styles.container}>
             <UserLogo title="User" />
@@ -35,14 +23,6 @@ const LogOut = ({ navigation}) => {
             >
                 <Text style={styles.logOutText}>Log Out</Text>
             </TouchableOpacity>
-            <PopUpMessage 
-                navigation={navigation} 
-                navigationScreen="Login" 
-                visibleState={visible} 
-                logoTitle={logoTitle} 
-                successMessage={successMessage} 
-                hintMessage={hintMessage} 
-            />
         </View>
     )
 }
