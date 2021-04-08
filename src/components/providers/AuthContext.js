@@ -44,7 +44,6 @@ const isUserEqual = (googleUser, firebaseUser) => {
 };
 
 const google = (dispatch) => (googleUser) => {
-  console.log("Google Auth Response", googleUser);
   const unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
     unsubscribe();
     if (!isUserEqual(googleUser, firebaseUser)) {
@@ -185,8 +184,10 @@ const signup = (dispatch) => (fullname, email, password) => {
         .catch((error) => {
           dispatch({ type: "errorMessage", payload: error.message });
         });
+    })
+    .catch((error) => {
+      dispatch({ type: "errorMessage", payload: error.message });
     });
-  dispatch({ type: "errorMessage", payload: error.message });
 };
 
 const clearErrorMessage = (dispatch) => () => {
