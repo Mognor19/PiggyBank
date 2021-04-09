@@ -48,7 +48,7 @@ const Navigation = () => {
     }, []);
   
     SplashScreen.preventAutoHideAsync();
-  
+    
     if (!state.loading) SplashScreen.hideAsync();
 
   return (

@@ -56,12 +56,14 @@ const google = (dispatch) => (googleUser) => {
         .signInWithCredential(credential)
         .then((response) => {
           const uid = response.user.uid;
-          const email = response.user.email
-          const fullname = response.user.displayName
+          const email = response.user.email;
+          const fullname = response.user.displayName;
+          const pictureUrl = response.user.photoURL;
           const data = {
             id: uid,
             email,
             fullname,
+            pictureUrl,
           };
           const usersRef = firebase.firestore().collection("users");
           usersRef
@@ -75,7 +77,7 @@ const google = (dispatch) => (googleUser) => {
                 .then(() => {
                   dispatch({
                     type: "signup",
-                    payload: { user: data, registered: true },
+                    payload: { user: data, registered: true},
                   });
                 })
                 .catch((error) => {
