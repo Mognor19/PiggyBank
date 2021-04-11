@@ -35,7 +35,8 @@ function MyTabs() {
         tabBarIcon: ({ color, size }) => (
           <Feather name="user" size={size} color={color} />
         ),
-      }}/>
+      }}
+      />
     </Tab.Navigator>
   );
 }

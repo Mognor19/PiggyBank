@@ -11,7 +11,7 @@ const UserForm = () => {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>{Name}</Text>
+      <Text style={styles.titleName}>{Name}</Text>
       <Text style={styles.titleText}>{Email}</Text>
     </View>
   );
@@ -19,15 +19,27 @@ const UserForm = () => {
 
 const styles = StyleSheet.create({
   container : {
-    flex:0.7,
+    flex:0.2,
     justifyContent:'center',
+    alignItems:"flex-end",
+    flexDirection:"column",
     backgroundColor:theme.colors.grey,
+    paddingLeft:12,
+    top:-140,
+    left:100
+    
   },
   titleText: {
-    flex:1,
-    fontSize: 20,
+    flex:0,
+    fontSize: 10,
     fontWeight: "bold",
-    alignSelf:'center',
+    alignSelf:'flex-start',
+  },
+  titleName: {
+    flex:0,
+    fontSize: 25,
+    fontWeight: "bold",
+    alignSelf:'flex-start',
   },
 });
 
