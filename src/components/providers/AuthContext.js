@@ -67,27 +67,27 @@ const google = (dispatch) => (googleUser) => {
           };
           const usersRef = firebase.firestore().collection("users");
           usersRef
-          .doc(uid)
-          .get()
-          .then((firestoreDocument) => {
-            if (!firestoreDocument.exists) {
-              usersRef
-                .doc(uid)
-                .set(data)
-                .then(() => {
-                  dispatch({
-                    type: "signup",
-                    payload: { user: data, registered: true},
+            .doc(uid)
+            .get()
+            .then((firestoreDocument) => {
+              if (!firestoreDocument.exists) {
+                usersRef
+                  .doc(uid)
+                  .set(data)
+                  .then(() => {
+                    dispatch({
+                      type: "signup",
+                      payload: { user: data, registered: true },
+                    });
+                  })
+                  .catch((error) => {
+                    dispatch({ type: "errorMessage", payload: error.message });
                   });
-                })
-                .catch((error) => {
-                  dispatch({ type: "errorMessage", payload: error.message });
-                });
-            } else {
-              dispatch({ type: "errorMessage", payload: "" });
-              dispatch({ type: "signin", payload: firestoreDocument.data() });
-            }
-          });
+              } else {
+                dispatch({ type: "errorMessage", payload: "" });
+                dispatch({ type: "signin", payload: firestoreDocument.data() });
+              }
+            });
         })
         .catch((error) => {
           dispatch({ type: "errorMessage", payload: error.message });
@@ -96,6 +96,24 @@ const google = (dispatch) => (googleUser) => {
       console.log("User already signed-in Firebase.");
     }
   });
+};
+
+const editName = (dispatch) => (id, fullname) => {
+  firebase
+    .firestore()
+    .collection("users")
+    .doc(id)
+    .update({ fullname })
+    .then(() => {
+      dispatch({
+        type: "updateUser",
+        payload: { user: { fullname } },
+      });
+      dispatch({ type: "errorMessage", payload: "user updated!" });
+    })
+    .catch((error) => {
+      dispatch({ type: "errorMessage", payload: error.message });
+    });
 };
 
 const signin = (dispatch) => (email, password) => {
@@ -162,6 +180,20 @@ const persistLogin = (dispatch) => () => {
   });
 };
 
+const updateName = (dispatch) => (fullname, id) => {
+  firebase
+    .firestore()
+    .collection("users")
+    .doc(id)
+    .update({ fullname })
+    .then(() => {
+      dispatch({ type: "errorMessage", payload: "user updated!" });
+    })
+    .catch((error) => {
+      dispatch({ type: "errorMessage", payload: error.message });
+    });
+};
+
 const signup = (dispatch) => (fullname, email, password) => {
   firebase
     .auth()
@@ -205,6 +237,7 @@ export const { Provider, Context } = createDataContext(
     signup,
     clearErrorMessage,
     google,
+    editName,
   },
   {
     user: {},

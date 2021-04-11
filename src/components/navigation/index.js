@@ -19,6 +19,7 @@ function MyTabs() {
   let color = theme.colors.dark
   return (
     <Tab.Navigator tabBarOptions={{
+      keyboardHidesTabBar:true,
       showLabel:false, 
       activeBackgroundColor:theme.colors.dark, 
       activeTintColor:theme.colors.gold,
