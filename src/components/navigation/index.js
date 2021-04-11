@@ -11,6 +11,7 @@ import LogOut from '../screen/LogOut';
 import { Feather } from '@expo/vector-icons';
 import * as SplashScreen from 'expo-splash-screen';
 import {Context as AuthContext} from '../providers/AuthContext';
+import Expense from '../shared/Expense';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -25,7 +26,7 @@ function MyTabs() {
       inactiveBackgroundColor:theme.colors.dark,
       inactiveTintColor:theme.colors.grey,
       }}>
-      <Tab.Screen name="Home" component={ExpenseList} options={{
+      <Tab.Screen name="Home" component={Expense} options={{
         tabBarIcon: ({ color, size }) => (
           <Feather name="home" size={size} color={color} />
         ),
@@ -64,6 +65,7 @@ const Navigation = () => {
                 <Stack.Screen name="Login" component={Login}/>
                 <Stack.Screen name="Recover" component={Recover} />
                 <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="ExpenseList" component={ExpenseList}/>
             </Stack.Navigator>
           )}
         </>

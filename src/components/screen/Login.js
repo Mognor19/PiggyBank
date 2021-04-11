@@ -12,7 +12,7 @@ import theme from "../theme";
 import Logo from "../shared/Logo";
 import * as Google from "expo-google-app-auth";
 import { Context as AuthContext } from "../providers/AuthContext";
-import getEnvVars from "../../../enviroment";
+import getEnvVars from "../../enviroment";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { ThemeProvider } from "@react-navigation/native";
 
