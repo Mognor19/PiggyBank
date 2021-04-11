@@ -12,6 +12,7 @@ import { Feather } from '@expo/vector-icons';
 import * as SplashScreen from 'expo-splash-screen';
 import {Context as AuthContext} from '../providers/AuthContext';
 import Expense from '../shared/Expense';
+import InfoGraph from '../shared/InfoGraph';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,7 +27,7 @@ function MyTabs() {
       inactiveBackgroundColor:theme.colors.dark,
       inactiveTintColor:theme.colors.grey,
       }}>
-      <Tab.Screen name="Home" component={Expense} options={{
+      <Tab.Screen name="Home" component={InfoGraph} options={{
         tabBarIcon: ({ color, size }) => (
           <Feather name="home" size={size} color={color} />
         ),
