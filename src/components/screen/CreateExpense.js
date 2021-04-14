@@ -10,7 +10,6 @@ import { Input } from "react-native-elements";
 import { Context as AuthContext } from "../providers/AuthContext";
 import { Context as ExpenseContext } from "../providers/ExpenseContext";
 import theme from "../theme";
-import DateTimePicker from "@react-native-community/datetimepicker";
 
 const { width, height } = Dimensions.get("screen");
 

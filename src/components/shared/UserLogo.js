@@ -13,7 +13,7 @@ const UserLogo = ({ picture, title }) => {
           size="large"
           rounded
           title={title}
-          overlayContainerStyle={{ backgroundColor: theme.colors.blue }}
+          overlayContainerStyle={{ backgroundColor: theme.light.blue }}
           activeOpacity={0.7}
         />
       ) : (
@@ -21,7 +21,7 @@ const UserLogo = ({ picture, title }) => {
           size="large"
           rounded
           source = {{ uri: picture }}
-          overlayContainerStyle={{ backgroundColor: theme.colors.blue }}
+          overlayContainerStyle={{ backgroundColor: theme.light.blue }}
           activeOpacity={0.7}
         />
       )}
@@ -32,7 +32,6 @@ const UserLogo = ({ picture, title }) => {
 const styles = StyleSheet.create({
   container: {
     justifyContent:'center',
-    backgroundColor:theme.colors.grey,
     paddingLeft:20,
     paddingTop:80,
     paddingVertical:60,

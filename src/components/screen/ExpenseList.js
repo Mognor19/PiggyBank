@@ -129,7 +129,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: width,
-    backgroundColor: theme.colors.grey,
     paddingTop: 41,
   },
   cardContainer: {
@@ -141,7 +140,7 @@ const styles = StyleSheet.create({
   },
   cardText:{
     fontSize:20,
-    color:theme.colors.dark
+    color:theme.light.text
   },
   containerColumn: {
     width: width,
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
   },
   bubble1: {
     width: width,
-    backgroundColor: theme.colors.red,
+    backgroundColor: theme.light.red,
     marginTop: 0,
     alignSelf: "center",
     borderRadius: 15,
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     flexDirection:'row',
     width: width * 0.9,
-    backgroundColor: theme.colors.blue,
+    backgroundColor: theme.light.blue,
     margin: 10,
     alignSelf: "center",
     height: height * 0.2,
@@ -171,7 +170,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 10,
     bottom: 20,
-    backgroundColor: theme.colors.dark,
+    backgroundColor: theme.light.gold,
     borderRadius: 50,
     zIndex: 99999,
   },
@@ -200,7 +199,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: height * 0.2,
     alignSelf: "center",
-    color: theme.colors.dark,
+    color: theme.light.red,
   },
 });
 

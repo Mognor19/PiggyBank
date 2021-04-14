@@ -6,25 +6,25 @@ import theme from '../theme'
 const { width} = Dimensions.get("screen");
 
 const Alert = ({ type, title }) => {
-  let background = "";
+  let backColor = "";
   let icon = "";
 
   if (type === "error") {
-    background = "#fdecea";
+    backColor = "#fdecea";
     icon = "times-circle";
   } else if (type === "warning") {
-    background = "#fff4e5";
+    backColor = "#fff4e5";
     icon = "warning";
   } else if (type === "info") {
-    background = "#e8f4fd";
+    backColor = "#e8f4fd";
     icon = "info-circle";
   } else if (type === "success") {
-    background = "#edf7ed";
+    backColor = "#edf7ed";
     icon = "check-circle";
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: background, opacity:0.9}]}>
+    <View style={[styles.container, {backgroundColor: backColor, opacity:0.9}]}>
       <Icon name={icon} style={styles.icon} />
       <Text>{title}</Text>
     </View>

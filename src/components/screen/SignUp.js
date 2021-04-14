@@ -18,7 +18,7 @@ const Signup = ({ navigation }) => {
           navigation.navigate('Login')
         }}
       >
-        <Text>Already have an account? <Text style={styles.loginText}>Log In</Text></Text>
+        <Text style={styles.Text}>Already have an account? <Text style={styles.loginText}>Log In</Text></Text>
       </TouchableOpacity>
     </View>
   );
@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 10,
-    backgroundColor: theme.colors.grey,
   },
   login:{
     justifyContent:'flex-end',
@@ -37,7 +36,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   loginText:{
-    color:theme.colors.red
+    color:theme.light.blue
+  },
+  Text:{
+    color: theme.light.red
   },
 });
 
