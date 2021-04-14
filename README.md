@@ -11,7 +11,7 @@
 
 ## Instrucciones para la instalación
 
-Instalación:<br>
+<h3>Instalación:</h3><br>
 <code>npm install</code>
 <code>npm i react-native-elements --save</code>
 <code>npm i --save react-native-vector-icons</code>
@@ -25,6 +25,7 @@ Instalación:<br>
 <code>expo install expo-constants</code>
 <code>expo install expo-google-app-auth</code>
 <br>
-Iniciar Expo Metro:<br>
+<br>
+<h3>Iniciar Expo Metro:<h3><br>
 <code>expo start</code>
 
