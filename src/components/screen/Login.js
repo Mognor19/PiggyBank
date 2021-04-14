@@ -14,7 +14,7 @@ import * as Google from "expo-google-app-auth";
 import { Context as AuthContext } from "../providers/AuthContext";
 import getEnvVars from "../../../enviroment";
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
 const Login = ({ navigation }) => {
   const { state, google, clearErrorMessage } = useContext(AuthContext);
@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Logo title="Login" />
+      <Logo title="Login"/>
       <LoginForm navigation={navigation} />
       <SocialIcon
         type="google"
@@ -58,19 +58,19 @@ const Login = ({ navigation }) => {
         onPress={() => signInWithGoogleAsync()}
         title="Login with Google"
         style={styles.googleButton}
-        underlayColor={theme.colors.dark}
+        underlayColor={theme.light.red}
       />
       <TouchableOpacity
         style={styles.forgot}
         onPress={() => navigation.navigate("Recover")}
       >
-        <Text>Forgot your password?</Text>
+        <Text style={styles.text1}>Forgot your password?</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.create}
         onPress={() => navigation.navigate("SignUp")}
       >
-        <Text>
+        <Text style={styles.text1}>
           Dont have an account?{" "}
           <Text style={styles.register}>Register Now</Text>
         </Text>
@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: theme.colors.grey,
   },
   forgot: {
     alignItems: "center",
@@ -95,7 +94,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   register: {
-    color: theme.colors.red,
+    color: theme.light.blue,
+  },
+  text1:{
+    color: theme.light.red
   },
   googleButton: {
     width: width*0.8,

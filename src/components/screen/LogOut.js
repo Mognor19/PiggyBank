@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -9,9 +9,10 @@ import {
 import UserForm from "../forms/UserForm";
 import theme from "../theme";
 import UserLogo from "../shared/UserLogo";
+import InfoGraph from '../shared/InfoGraph';
 import { Context as AuthContext } from "../providers/AuthContext";
+const { width, height } = Dimensions.get("screen");
 
-const { width } = Dimensions.get("screen");
 
 const LogOut = ({ navigation }) => {
   const { state, signout } = useContext(AuthContext);
@@ -32,6 +33,7 @@ const LogOut = ({ navigation }) => {
       <TouchableOpacity style={styles.logout} onPress={handleLogOut}>
         <Text style={styles.logOutText}>Log Out</Text>
       </TouchableOpacity>
+      
     </View>
   );
 };
@@ -40,22 +42,22 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     minHeight:"100%",
-    backgroundColor: theme.colors.grey,
   },
   logout: {
     alignSelf:'center',
     width:width*0.8,
     borderRadius:4,
     borderTopWidth:1,
-    borderTopColor:theme.colors.dark,
+    borderTopColor:theme.light.dark,
     borderBottomWidth:1,
-    borderBottomColor:theme.colors.dark,
-    backgroundColor: theme.colors.blue,
+    borderBottomColor:theme.light.dark,
+    backgroundColor: theme.light.blue,
     paddingVertical:6
   },
   logOutText: {
     alignSelf: "center",
     fontSize: 18,
+    color: theme.light.text
   },
 });
 

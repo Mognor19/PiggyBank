@@ -28,13 +28,14 @@ const styles = StyleSheet.create({
     height: height * 0.25,
     padding:height*0.06,
     resizeMode: "contain",
-    alignSelf:'center'
+    alignSelf:'center',
+    color: theme.light.red
   },
   logoTitle:{
     alignSelf:'center',
     fontSize:height*0.04,
     fontWeight:'bold',
-    color:theme.colors.dark,
+    color:theme.light.red,
   },
 });
 

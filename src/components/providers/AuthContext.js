@@ -237,7 +237,7 @@ export const { Provider, Context } = createDataContext(
     signup,
     clearErrorMessage,
     google,
-    editName,
+    updateName,
   },
   {
     user: {},

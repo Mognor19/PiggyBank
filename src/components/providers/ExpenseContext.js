@@ -10,7 +10,7 @@ const expenseReducer = (state, action) => {
     case "getExpenses":
       return { ...state, expenses: action.payload };
     case "setCurrentExpense":
-      return { ...state, currentexpense: action.payload };
+      return { ...state, currentExpense: action.payload };
     case "updateExpense":
       return {
         ...state,
@@ -98,6 +98,18 @@ const updateExpense = (dispatch) => (id, title, amount, date) => {
     });
 };
 
+const deleteExpense = (dispatch) => (id) => {
+  expensesRef
+    .doc(id)
+    .delete()
+    .then(() => {
+      dispatch({ type: "errorMessage", payload: "Expense deleted." });
+    })
+    .catch((error) => {
+      dispatch({ type: "errorMessage", payload: error.message });
+    });
+};
+
 export const { Provider, Context } = createDataContext(
   expenseReducer,
   {
@@ -106,10 +118,11 @@ export const { Provider, Context } = createDataContext(
     setCurrentExpense,
     updateExpense,
     clearMessage,
+    deleteExpense,
   },
   {
     expenses: [],
     errorMessage: "",
-    currentexpense: { id: "", title: "", amount: "", date: "" },
+    currentExpense: { id: "", title: "", amount: "", date: "" },
   }
 );

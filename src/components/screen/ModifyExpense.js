@@ -1,65 +1,43 @@
-import React, { useState, useContext } from "react";
-import {
-  Dimensions,
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { StyleSheet, View, Dimensions, Text, TouchableOpacity } from "react-native";
 import { Input } from "react-native-elements";
-import { Context as AuthContext } from "../providers/AuthContext";
-import { Context as ExpenseContext } from "../providers/ExpenseContext";
 import theme from "../theme";
+import { Context as ExpenseContext } from "../providers/ExpenseContext";
+import { Context as AuthContext } from "../providers/AuthContext";
 
 const { width, height } = Dimensions.get("screen");
 
-const CreateExpense = ({ navigation }) => {
+const ModifyExpense = ({ navigation }) => {
+  const { state: expensesState, updateExpense } = useContext(ExpenseContext);
   const { state } = useContext(AuthContext);
-  const { createExpense } = useContext(ExpenseContext);
-  const [date, setDate] = useState(new Date());
-  const [printDate, setPrintDate] = useState(date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear());
-  const [show, setShow] = useState(false);
+  const [title, setTitle] = useState("");
+  const [rawDate, setRawDate] = useState(new Date());
+  const [date, setDate] = useState(rawDate.getDate() + "/" + rawDate.getMonth() + "/" + rawDate.getFullYear());
   const [amount, setAmount] = useState("");
-  const [expenseTitle, setExpenseTitle] = useState("");
-  const [expenseTitleError, setExpenseTitleError] = useState(false);
+  const [titleError, setTitleError] = useState(false);
   const [amountError, setAmountError] = useState(false);
 
-  // const onChange = (event, selectedDate) => {
-  //   const currentDate = selectedDate || date;
-  //   setDate(currentDate);
-  //   setPrintDate(currentDate.toString().substring(0, 15));
-  //   setShow(false);
-  // };
+  useEffect(() => {
+    if (expensesState.currentExpense.id) {
+      setTitle(expensesState.currentExpense.title);
+      setAmount(expensesState.currentExpense.amount);
+    }
+  }, [expensesState.currentExpense]);
 
   const handleSaveExpense = () => {
-    if(amount.includes(".") === false){
-      const moneyValue = amount + ".00"
-      if (!expenseTitle) {
-        setExpenseTitleError(true);
-      } else if (!amount) {
-        setAmountError(true);
-      } else {
-        createExpense(expenseTitle, moneyValue, printDate, state.user.id);
-        navigation.navigate("ExpenseList");
-      }
-    }else if(amount.slice(-3).charAt(0) != "."){
-      return setAmountError(true)
-    }else {
-      if (!expenseTitle) {
-        setExpenseTitleError(true);
-      } else if (!amount) {
-        setAmountError(true);
-      } else {
-        createExpense(expenseTitle, amount, printDate, state.user.id);
-        navigation.navigate("ExpenseList");
-      }
-    }
+    updateExpense(
+      expensesState.currentExpense.id,
+      title,
+      amount,
+      date,
+    );
+    navigation.navigate("ExpenseList")
   };
 
   const handleVerify = (input) => {
-    if (input === "expenseTitle") {
-      if (!expenseTitle) setExpenseTitleError(true);
-      else setExpenseTitleError(false);
+    if (input === "yitle") {
+      if (!title) setTitleError(true);
+      else setTitleError(false);
     } else if (input === "amount") {
       if (!amount) setAmountError(true);
       else setAmountError(false);
@@ -68,18 +46,18 @@ const CreateExpense = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text1}>Create Expense</Text>
+      <Text style={styles.text1}>Modify Expense</Text>
       <Input
         style={styles.input}
         containerStyle={{ paddingHorizontal: width * 0.1 }}
         placeholder="Title"
-        value={expenseTitle}
-        onChangeText={setExpenseTitle}
+        value={title}
+        onChangeText={setTitle}
         onBlur={() => {
-          handleVerify("expenseTitle");
+          handleVerify("title");
         }}
         errorMessage={
-          expenseTitleError ? "Please type in a title" : null
+          titleError ? "Please type in a title" : null
         }
       />
       <Input
@@ -92,12 +70,12 @@ const CreateExpense = ({ navigation }) => {
         onBlur={() => {
           handleVerify("amount");
         }}
-        errorMessage={amountError ? "The value you saved is either wrong or empty." : null}
+        errorMessage={amountError ? "Please type in an amount" : null}
       />
       <View style={styles.containerRow}>
         <Text>
           Date:{" "}
-          {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()}
+          {date}
         </Text>
         {/* <TouchableOpacity
           onPress={() => {
@@ -145,7 +123,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: width * 0.8,
     alignSelf: "center",
-    backgroundColor: theme.light.background,
     flexDirection: "row",
   },
   botton: {
@@ -168,4 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateExpense;
+export default ModifyExpense;

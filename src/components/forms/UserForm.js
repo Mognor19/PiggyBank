@@ -23,8 +23,8 @@ const UserForm = () => {
   const Email = state.user.email;
 
   const saveName = () => {
-    setCurrentName(newName);
     updateName(currentName, state.user.id)
+    setNewName("");
   }
 
   return (
@@ -64,17 +64,17 @@ const UserForm = () => {
               setEdit(false);
             }}
           >
-            <Feather name="x" size={24} color={theme.colors.red} />
+            <Feather name="x" size={24} color={theme.light.red} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.option}
             onPress={() => {
-              setNewName("");
+              setCurrentName(newName);
               saveName()
               setEdit(false)
             }}
           >
-            <Feather name="check" size={24} color={theme.colors.blue} />
+            <Feather name="check" size={24} color={theme.light.blue} />
           </TouchableOpacity>
         </View>
       )}
@@ -86,19 +86,18 @@ const UserForm = () => {
 const styles = StyleSheet.create({
   edit: {
     borderWidth: 2,
-    borderColor: theme.colors.white,
+    borderColor: theme.light.white,
     borderRadius: 100,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.light.white,
     fontSize: 18,
     opacity: 0.9,
-    color: theme.colors.dark,
+    color: theme.light.text,
   },
   container : {
     flex:0.2,
     justifyContent:'center',
     alignItems:"flex-end",
     flexDirection:"column",
-    backgroundColor:theme.colors.grey,
     paddingLeft:12,
     top:-140,
     left:100
@@ -109,26 +108,28 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     alignSelf:'flex-start',
+    color: theme.light.red
   },
   titleName: {
     flex:0,
     fontSize: 25,
     fontWeight: "bold",
     alignSelf:'flex-start',
+    color: theme.light.red
   },
   option: {
     width: 35,
     marginLeft: 10,
     height: 35,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.light.white,
     padding: 5,
   },
   input: {
     flex:0,
     fontSize: 25,
     fontWeight: "bold",
-    alignSelf:'flex-start',
-    flexDirection:'row'
+    alignSelf:'center',
+    color: theme.light.red
   },
 });
 
