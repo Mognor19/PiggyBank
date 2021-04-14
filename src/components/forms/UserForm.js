@@ -23,8 +23,8 @@ const UserForm = () => {
   const Email = state.user.email;
 
   const saveName = () => {
-    setCurrentName(newName);
     updateName(currentName, state.user.id)
+    setNewName("");
   }
 
   return (
@@ -69,7 +69,7 @@ const UserForm = () => {
           <TouchableOpacity
             style={styles.option}
             onPress={() => {
-              setNewName("");
+              setCurrentName(newName);
               saveName()
               setEdit(false)
             }}

@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
   Dimensions,
   SafeAreaView,
   FlatList,
@@ -13,77 +12,112 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../theme";
 import { Context as ExpenseContext } from "../providers/ExpenseContext";
 import { Context as AuthContext } from "../providers/AuthContext";
+import { Context as BalanceContext } from "../providers/BalanceContext";
+import { ThemeProvider } from "@react-navigation/native";
+import { Feather } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("screen");
 
 const ExpenseList = ({ navigation }) => {
   const { state } = useContext(AuthContext);
+  // const { state: balanceState , getBalance} = useContext(BalanceContext);
   const {
     state: expenseState,
     getExpenses,
-    clearMessage,
     setCurrentExpense,
+    deleteExpense,
   } = useContext(ExpenseContext);
 
   const emptyFlatList = (
     <View style={styles.emptyExpenses}>
-      <Text>You don't have any expense yet...</Text>
+      <Text>You are free of any dept!</Text>
     </View>
   );
 
   useEffect(() => {
     getExpenses(state.user.id);
+    // getBalance(state.user.id);
   }, []);
 
   const handleSelectExpense = (expense) => {
     setCurrentExpense(expense);
-    navigation.navigate("CreateExpense");
+    navigation.navigate("ModifyExpense");
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <Button
-      containerStyle={styles.plus}
-          type="clear"
-          icon={
-            <Icon
-              style={styles.icon}
-              reverse
-              name="plus"
-              type="feather"
-              color={theme.colors.dark}
-            />
-          }
-          onPress={() => {
-            navigation.navigate("CreateExpense");
-          }}
+        containerStyle={styles.plus}
+        type="clear"
+        icon={
+          <Icon
+            style={styles.icon}
+            reverse
+            name="plus"
+            type="feather"
+            color={theme.colors.dark}
           />
-      <TouchableOpacity style={styles.bubble1}>
-        <Text style={styles.text1}>Tus Ahorros</Text>
-        <Text style={styles.ahorro}>8096.71</Text>
-        <Icon style={styles.icon1} name="plus" type="feather" color="#F3DFA2" />
-      </TouchableOpacity>
+        }
+        onPress={() => {
+          navigation.navigate("CreateExpense");
+        }}
+      />
+      {/* {balanceState.balances ? (
+        <View style={styles.bubble1}>
+          <Text style={styles.text1}>Currently your expendable amount is: </Text>
+          <Text style={styles.ahorro}></Text>
+          <Icon
+            style={styles.icon1}
+            name="plus"
+            type="feather"
+            color="#F3DFA2"
+          />
+        </View>
+      ) : (
+        <View style={styles.bubble1}>
+          <Text style={styles.ahorro}>You are currently poor.</Text>
+          <Icon
+            style={styles.icon1}
+            name="plus"
+            type="feather"
+            color="#F3DFA2"
+          />
+        </View>
+      )} */}
       <View>
         <FlatList
           keyExtractor={(item) => item.id}
           data={expenseState.expenses}
           ListEmptyComponent={emptyFlatList}
           renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.bubble}
-              onPress={() => {
-                handleSelectExpense(item);
-              }}
-            >
-              <Card containerStyle={styles.cardContainer}>
-                <Card.Title>{item.title}</Card.Title>
-                <Card.Divider />
-                <View style={styles.containerColumn}>
-                  <Text>{item.amount}</Text>
-                  <Text>{item.date}</Text>
-                </View>
-              </Card>
-            </TouchableOpacity>
+            <View style={styles.bubble}>
+              <TouchableOpacity
+                onPress={() => {
+                  handleSelectExpense(item);
+                }}
+              >
+                <Card containerStyle={styles.cardContainer}>
+                  <Card.Title style={styles.cardText}>{item.title}</Card.Title>
+                  <Card.Divider />
+                  <View style={styles.containerColumn}>
+                    <Text style={styles.cardText}>{item.amount}</Text>
+                    <Text style={styles.cardText}>{item.date}</Text>
+                  </View>
+                </Card>
+              </TouchableOpacity>
+              <View style={{justifyContent:'center'}}>
+              <Button
+                type="clear"
+                buttonStyle={{height:height*0.2, width:width*0.1}}
+                icon={
+                  <Feather name="trash-2" size={20} color={theme.colors.dark} />
+                }
+                onPress={() => {
+                  deleteExpense(item.id);
+                }}
+              />
+              </View>
+            </View>
           )}
         />
       </View>
@@ -99,9 +133,15 @@ const styles = StyleSheet.create({
     paddingTop: 41,
   },
   cardContainer: {
-    flex: 1,
+    elevation:0,
+    borderColor:'transparent',
+    width:width*0.7,
     backgroundColor: "transparent",
     zIndex: 2,
+  },
+  cardText:{
+    fontSize:20,
+    color:theme.colors.dark
   },
   containerColumn: {
     width: width,
@@ -112,11 +152,12 @@ const styles = StyleSheet.create({
     width: width,
     backgroundColor: theme.colors.red,
     marginTop: 0,
-    height: height * 0.2,
     alignSelf: "center",
     borderRadius: 15,
   },
   bubble: {
+    justifyContent:'center',
+    flexDirection:'row',
     width: width * 0.9,
     backgroundColor: theme.colors.blue,
     margin: 10,
@@ -127,12 +168,12 @@ const styles = StyleSheet.create({
   },
   plus: {
     alignSelf: "flex-end",
-    position:'absolute',
-    right:10,
+    position: "absolute",
+    right: 10,
     bottom: 20,
     backgroundColor: theme.colors.dark,
     borderRadius: 50,
-    zIndex:99999,
+    zIndex: 99999,
   },
   icon: {
     width: width * 0.2,
@@ -154,6 +195,12 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 50,
     alignSelf: "center",
+  },
+  emptyExpenses: {
+    flex: 1,
+    paddingTop: height * 0.2,
+    alignSelf: "center",
+    color: theme.colors.dark,
   },
 });
 

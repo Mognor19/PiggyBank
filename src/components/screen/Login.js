@@ -14,7 +14,7 @@ import * as Google from "expo-google-app-auth";
 import { Context as AuthContext } from "../providers/AuthContext";
 import getEnvVars from "../../../enviroment";
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
 const Login = ({ navigation }) => {
   const { state, google, clearErrorMessage } = useContext(AuthContext);

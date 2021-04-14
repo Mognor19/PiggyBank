@@ -9,6 +9,7 @@ import SignUp from "../screen/SignUp";
 import theme from "../theme";
 import LogOut from "../screen/LogOut";
 import CreateExpense from '../screen/CreateExpense';
+import ModifyExpense from '../screen/ModifyExpense'
 import { Feather } from "@expo/vector-icons";
 import * as SplashScreen from "expo-splash-screen";
 import { Context as AuthContext } from "../providers/AuthContext";
@@ -21,6 +22,7 @@ function MyStacks() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ExpenseList" component={ExpenseList} />
       <Stack.Screen name="CreateExpense" component={CreateExpense}/>
+      <Stack.Screen name="ModifyExpense" component={ModifyExpense}/>
     </Stack.Navigator>
   );
 }
