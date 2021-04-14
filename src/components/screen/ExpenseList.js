@@ -3,25 +3,8 @@ import { StyleSheet, Text, View, ScrollView, Dimensions} from 'react-native';
 import { Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import theme from '../theme';
-import PopUpMessage from '../shared/PopUpMessage';
-
 const {width, height} = Dimensions.get("screen")
-/*
-    <PopUpMessage 
-    navigation={navigation} 
-    navigationScreen="Login" 
-    visibleState={visible} 
-    logoTitle={logoTitle} 
-    successMessage={successMessage} 
-    hintMessage={hintMessage} />
 
-    const [visible, setVisible] = useState(false);
-    const logoTitle ="Success"
-    const successMessage = "A password recovery message was sent to the email you provided."
-    const hintMessage = "If you are unable to find it please do check your Junk/Spam folder."
-
-    onPress={() => setVisible(!visible)} 
- */
 const ExpenseList = () => {
     
     return (
@@ -78,13 +61,12 @@ const styles = StyleSheet.create({
     container : {
         flex:1,
         width: width,
-        backgroundColor: theme.colors.grey,
         paddingTop: 41,
         
     },
     bubble1:{
         width: width ,
-        backgroundColor: theme.colors.red,
+        backgroundColor: theme.light.red,
         marginTop: 0,
         height: height * 0.20,
         alignSelf: 'center',
@@ -93,7 +75,7 @@ const styles = StyleSheet.create({
     },
     bubble:{
         width: width * 0.9,
-        backgroundColor: theme.colors.blue,
+        backgroundColor: theme.light.blue,
         margin: 10,
         padding:10,
         alignSelf: 'center',
@@ -103,7 +85,7 @@ const styles = StyleSheet.create({
     },
     plus:{
         width: width * 0.16,
-        backgroundColor: theme.colors.dark,
+        backgroundColor: theme.light.text,
         borderRadius: 50,
         margin: 10,
         height: height * 0.08,

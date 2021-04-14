@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
   container : {
     flex:0.7,
     justifyContent:'center',
-    backgroundColor:theme.colors.grey,
   },
   titleText: {
     flex:1,
     fontSize: 20,
     fontWeight: "bold",
     alignSelf:'center',
+    color: theme.light.red
   },
 });
 

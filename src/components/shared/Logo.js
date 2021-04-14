@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     fontSize:height*0.04,
     fontWeight:'bold',
-    color:theme.colors.dark,
+    color:theme.light.red,
   },
 });
 

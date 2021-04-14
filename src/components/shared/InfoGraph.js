@@ -26,27 +26,24 @@ const InfoGraphs = ({Expense1, Expense2, Expense3, Expense4, Expense5, Date1, Da
                 ]
             }}
             marginLeft= {30}
-            width={Dimensions.get("window").width} // from react-native
+            width={width}
             height={300}
             yAxisLabel="L."
-            yAxisInterval={1} // optional, defaults to 1
+            yAxisInterval={1}
             chartConfig={{
-                backgroundColor: theme.colors.gold,
-                backgroundGradientFrom: theme.colors.white,
-                backgroundGradientTo: theme.colors.dark,
-                decimalPlaces: 0, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba( 200, 255, 255, ${opacity})`,
-                labelColor: (opacity = 1) => `rgba(35, 31, 32, ${opacity})`,
+                backgroundColor: theme.light.gold,
+                decimalPlaces: 0,
+                color: (opacity = 1) => `rgba( 243, 223, 162, ${opacity})`,
+                labelColor: (opacity = 1) => `rgba(239, 230, 221, ${opacity})`,
                 propsForDots: {
                     r: "6",
-                    strokeWidth: "1",
-                    stroke: theme.colors.blue
+                    strokeWidth: "0",
+                    stroke: theme.light.grey
                 }
             }}
             bezier
             style={styles.chart}
         />
-        
     </View>
   );
 };
@@ -55,7 +52,6 @@ const styles = StyleSheet.create({
     container : {
         flex:1,
         width: width,
-        backgroundColor: theme.colors.grey,
         paddingTop: 41,
         
     },

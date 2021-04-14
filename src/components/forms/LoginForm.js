@@ -83,7 +83,7 @@ const LoginForm = () => {
 
 const styles = StyleSheet.create({
   login:{
-    backgroundColor:theme.colors.blue,
+    backgroundColor:theme.light.blue,
     padding:8,
     width:width*0.8,
     alignSelf:'center'

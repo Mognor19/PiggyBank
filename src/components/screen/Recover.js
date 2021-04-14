@@ -42,7 +42,7 @@ const Recover = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Logo title="Recover Password"/>
+            <Logo title="Recover Password" />
             {error ? <Alert title={error} type="error" /> : null}
             <Input
                 style={styles.input}
@@ -70,7 +70,7 @@ const Recover = ({ navigation }) => {
                 style={styles.goBack}
                 onPress={() => navigation.navigate('Login')}
             >
-                <Text>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
+                <Text style={styles.text1}>Tapped by mistake? <Text style={styles.goBackText}>Go back</Text></Text>
             </TouchableOpacity>
             {/* Success Message of the password recovery email */}
             <PopUpMessage 
@@ -89,22 +89,24 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems: 'center',
-        backgroundColor: theme.colors.grey,
     },
     button:{
         alignItems:'center',
         width: width * 0.8,
         padding: 8,
         marginTop:height*0.03,
-        backgroundColor:theme.colors.blue,
+        backgroundColor:theme.light.blue,
     },
     text:{
-        color: theme.colors.dark,
+        color: theme.light.text,
         fontSize:18,
+    },
+    text1:{
+        color: theme.light.red
     },
     input:{
         fontSize:18,
-        color: theme.colors.dark,
+        color: theme.light.text,
         paddingTop:height*0.1
     },
     goBack:{
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     },
     goBackText:{
         alignSelf:'center',
-        color:theme.colors.red,
+        color:theme.light.blue,
     },
 });
 

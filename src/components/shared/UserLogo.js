@@ -13,7 +13,7 @@ const UserLogo = ({ picture, title }) => {
           size="xlarge"
           rounded
           title={title}
-          overlayContainerStyle={{ backgroundColor: theme.colors.blue }}
+          overlayContainerStyle={{ backgroundColor: theme.light.blue }}
           activeOpacity={0.7}
         />
       ) : (
@@ -21,7 +21,7 @@ const UserLogo = ({ picture, title }) => {
           size="xlarge"
           rounded
           source = {{ uri: picture }}
-          overlayContainerStyle={{ backgroundColor: theme.colors.blue }}
+          overlayContainerStyle={{ backgroundColor: theme.light.blue }}
           activeOpacity={0.7}
         />
       )}

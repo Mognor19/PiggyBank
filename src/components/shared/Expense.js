@@ -20,11 +20,11 @@ const Expense = () => {
         />
         <View style={styles.containerRow}>
         <TouchableOpacity style={styles.botton}>
-            <Text style={styles.text1}>Accept</Text>
+            <Text style={styles.text}>Accept</Text>
             
         </TouchableOpacity>
         <TouchableOpacity style={styles.botton}>
-            <Text style={styles.text1}>Cancel</Text>
+            <Text style={styles.text}>Cancel</Text>
             
         </TouchableOpacity>
         </View>
@@ -36,20 +36,18 @@ const styles = StyleSheet.create({
     container : {
         flex:1,
         width: width,
-        backgroundColor: theme.colors.grey,
         paddingTop: 41,
         
     },
     containerRow : {
         width: width,
-        backgroundColor: theme.colors.grey,
         paddingTop: 41,
         flexDirection: 'row',
         marginLeft : 50,
     },
     botton:{
         width: width * 0.35 ,
-        backgroundColor: theme.colors.blue,
+        backgroundColor: theme.light.blue,
         margin: 5,
         height: height * 0.061,
         alignSelf: 'center',
@@ -57,10 +55,16 @@ const styles = StyleSheet.create({
         alignContent: 'center',
 
     },
+    text:{
+        margin:5,
+        alignSelf: 'center',
+        fontSize: 30,
+    },
     text1:{
         margin:5,
         alignSelf: 'center',
         fontSize: 30,
+        color :theme.dark.red
     },
     input:{
         alignSelf:'center',
