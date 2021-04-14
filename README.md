@@ -1,6 +1,5 @@
-<hr>
 ![](https://github.com/Mognor19/PiggyBank/blob/develop/assets/LogoPiggyBankNoCoin.png?raw=true)
-<hr>
+
 # Piggy Bank
 
 ## Tecnologías utilizadas
