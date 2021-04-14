@@ -38,16 +38,20 @@ const LogOut = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
+    flex:1,
+    minHeight:"100%",
     backgroundColor: theme.colors.grey,
-    padding: 0,
   },
   logout: {
-    width: width * 0.8,
-    alignSelf: "center",
-    padding: 8,
+    alignSelf:'center',
+    width:width*0.8,
+    borderRadius:4,
+    borderTopWidth:1,
+    borderTopColor:theme.colors.dark,
+    borderBottomWidth:1,
+    borderBottomColor:theme.colors.dark,
     backgroundColor: theme.colors.blue,
+    paddingVertical:6
   },
   logOutText: {
     alignSelf: "center",

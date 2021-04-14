@@ -10,7 +10,7 @@ const UserLogo = ({ picture, title }) => {
     <View style={styles.container}>
       {picture === undefined ? (
         <Avatar
-          size="xlarge"
+          size="large"
           rounded
           title={title}
           overlayContainerStyle={{ backgroundColor: theme.colors.blue }}
@@ -18,7 +18,7 @@ const UserLogo = ({ picture, title }) => {
         />
       ) : (
         <Avatar
-          size="xlarge"
+          size="large"
           rounded
           source = {{ uri: picture }}
           overlayContainerStyle={{ backgroundColor: theme.colors.blue }}
@@ -31,11 +31,11 @@ const UserLogo = ({ picture, title }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: width * 0.5,
-    height: height * 0.235,
-    paddingLeft: 30,
-    alignSelf: "center",
-    marginTop: height * 0.1,
+    justifyContent:'center',
+    backgroundColor:theme.colors.grey,
+    paddingLeft:20,
+    paddingTop:80,
+    paddingVertical:60,
   },
 });
 

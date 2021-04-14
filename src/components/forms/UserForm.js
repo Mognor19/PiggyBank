@@ -30,7 +30,7 @@ const UserForm = () => {
   return (
     <View style={styles.container}>
       {edit === false ? (
-        <Text style={styles.titleText}>
+        <Text style={styles.titleName}>
           {currentName === "" ? Name : currentName}
           {"  "}
           <TouchableOpacity
@@ -45,7 +45,7 @@ const UserForm = () => {
         <View style={styles.input}>
           <Input
             style={{ fontSize: 16 }}
-            containerStyle={{ width: width * 0.5 }}
+            containerStyle={{ width: width * 0.4 }}
             placeholder={Name}
             value={newName}
             onChangeText={setNewName}
@@ -84,11 +84,6 @@ const UserForm = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 0.7,
-    justifyContent: "center",
-    backgroundColor: theme.colors.grey,
-  },
   edit: {
     borderWidth: 2,
     borderColor: theme.colors.white,
@@ -98,11 +93,28 @@ const styles = StyleSheet.create({
     opacity: 0.9,
     color: theme.colors.dark,
   },
+  container : {
+    flex:0.2,
+    justifyContent:'center',
+    alignItems:"flex-end",
+    flexDirection:"column",
+    backgroundColor:theme.colors.grey,
+    paddingLeft:12,
+    top:-140,
+    left:100
+    
+  },
   titleText: {
-    flex: 1,
-    fontSize: 20,
+    flex:0,
+    fontSize: 18,
     fontWeight: "bold",
-    alignSelf: "center",
+    alignSelf:'flex-start',
+  },
+  titleName: {
+    flex:0,
+    fontSize: 25,
+    fontWeight: "bold",
+    alignSelf:'flex-start',
   },
   option: {
     width: 35,
@@ -112,9 +124,11 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   input: {
-    flex: 1,
-    alignSelf: "center",
-    flexDirection: "row",
+    flex:0,
+    fontSize: 25,
+    fontWeight: "bold",
+    alignSelf:'flex-start',
+    flexDirection:'row'
   },
 });
 
