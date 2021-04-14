@@ -15,6 +15,7 @@ const Expense = (title, amount, date) => {
       <Card.Title>{title}</Card.Title>
       <Card.Divider />
       <View style={styles.containerColumn}>
+        <Text>{console.log(title)}</Text>
         <Text>{amount}</Text>
         <Text>{date}</Text>
       </View>

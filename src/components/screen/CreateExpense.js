@@ -18,7 +18,7 @@ const CreateExpense = ({ navigation }) => {
   const { state } = useContext(AuthContext);
   const { createExpense } = useContext(ExpenseContext);
   const [date, setDate] = useState(new Date());
-  const [printDate, setPrintDate] = useState("");
+  const [printDate, setPrintDate] = useState(date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear());
   const [show, setShow] = useState(false);
   const [amount, setAmount] = useState("");
   const [expenseTitle, setExpenseTitle] = useState("");
@@ -38,7 +38,6 @@ const CreateExpense = ({ navigation }) => {
     } else if (!amount) {
       setAmountError(true);
     } else {
-      setPrintDate(date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear())
       createExpense(expenseTitle, amount, printDate, state.user.id);
     }
 

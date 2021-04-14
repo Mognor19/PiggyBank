@@ -37,7 +37,6 @@ const ExpenseList = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
         <TouchableOpacity style={styles.bubble1}>
           <Text style={styles.text1}>Tus Ahorros</Text>
           <Text style={styles.ahorro}>8096.71</Text>
@@ -48,7 +47,6 @@ const ExpenseList = ({navigation}) => {
             color="#F3DFA2"
           />
         </TouchableOpacity>
-        <ScrollView style={styles.container}>
           <View>
             <Expenses
               expenses={expenseState.expenses}
@@ -78,7 +76,6 @@ const ExpenseList = ({navigation}) => {
         <Text style={styles.text1}>400</Text>
       </TouchableOpacity> */}
           </View>
-        </ScrollView>
         <TouchableOpacity
           style={styles.plus}
           onPress={() => {
@@ -93,7 +90,6 @@ const ExpenseList = ({navigation}) => {
             color={theme.colors.gold}
           />
         </TouchableOpacity>
-      </ScrollView>
     </SafeAreaView>
   );
 };

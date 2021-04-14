@@ -55,7 +55,6 @@ const createExpense = (dispatch) => (title, amount, date, author) => {
 const getExpenses = (dispatch) => (userId) => {
   expensesRef
     .where("userId", "==", userId)
-    .orderBy("date", "desc")
     .onSnapshot(
       (querySnapshot) => {
         const expenses = [];
