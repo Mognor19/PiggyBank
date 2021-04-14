@@ -14,5 +14,7 @@ web-build/
 
 #dependencies
 *.txt
-# Enviroment variables by release channel
+
+
+
 enviroment.js

@@ -6,90 +6,87 @@ import {
   ScrollView,
   Dimensions,
   SafeAreaView,
+  FlatList,
 } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, Card, Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../theme";
 import { Context as ExpenseContext } from "../providers/ExpenseContext";
 import { Context as AuthContext } from "../providers/AuthContext";
-import Expenses from "../shared/Expenses";
 
 const { width, height } = Dimensions.get("screen");
 
-const ExpenseList = ({navigation}) => {
-  const { state, signout } = useContext(AuthContext);
-  const { state: expenseState, getExpenses, clearMessage } = useContext(
-    ExpenseContext
+const ExpenseList = ({ navigation }) => {
+  const { state } = useContext(AuthContext);
+  const {
+    state: expenseState,
+    getExpenses,
+    clearMessage,
+    setCurrentExpense,
+  } = useContext(ExpenseContext);
+
+  const emptyFlatList = (
+    <View style={styles.emptyExpenses}>
+      <Text>You don't have any expense yet...</Text>
+    </View>
   );
 
   useEffect(() => {
     getExpenses(state.user.id);
   }, []);
 
-  // useEffect(() => {
-  //   if (expenseState.errorMessage) {
-  //     Toast.show({
-  //       text2: expenseState.errorMessage,
-  //     });
-  //     clearMessage();
-  //   }
-  // }, [expenseState.errorMessage]);
+  const handleSelectExpense = (expense) => {
+    setCurrentExpense(expense);
+    navigation.navigate("CreateExpense");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-        <TouchableOpacity style={styles.bubble1}>
-          <Text style={styles.text1}>Tus Ahorros</Text>
-          <Text style={styles.ahorro}>8096.71</Text>
-          <Icon
-            style={styles.icon1}
-            name="plus"
-            type="feather"
-            color="#F3DFA2"
-          />
-        </TouchableOpacity>
-          <View>
-            <Expenses
-              expenses={expenseState.expenses}
-              navigation={navigation}
+      <Button
+      containerStyle={styles.plus}
+          type="clear"
+          icon={
+            <Icon
+              style={styles.icon}
+              reverse
+              name="plus"
+              type="feather"
+              color={theme.colors.dark}
             />
-            {/* <TouchableOpacity style={styles.bubble}>
-        <Text style={styles.text1}>GYM</Text>
-        <Text style={styles.text1}></Text>
-        <Text style={styles.text1}>1200</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.bubble}>
-        <Text style={styles.text1}>Herbalife</Text>
-        <Text style={styles.text1}></Text>
-        <Text style={styles.text1}>950</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.bubble}>
-        <Text style={styles.text1}>Herbalife</Text>
-        <Text style={styles.text1}>3/10/2021</Text>
-        <Text style={styles.text1}>950</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.bubble}>
-        <Text style={styles.text1}>Cena</Text>
-        <Text style={styles.text1}>3/10/2021</Text>
-        <Text style={styles.text1}>400</Text>
-      </TouchableOpacity> */}
-          </View>
-        <TouchableOpacity
-          style={styles.plus}
+          }
           onPress={() => {
             navigation.navigate("CreateExpense");
           }}
-        >
-          <Icon
-            style={styles.icon}
-            reverse
-            name="plus"
-            type="feather"
-            color={theme.colors.gold}
           />
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.bubble1}>
+        <Text style={styles.text1}>Tus Ahorros</Text>
+        <Text style={styles.ahorro}>8096.71</Text>
+        <Icon style={styles.icon1} name="plus" type="feather" color="#F3DFA2" />
+      </TouchableOpacity>
+      <View>
+        <FlatList
+          keyExtractor={(item) => item.id}
+          data={expenseState.expenses}
+          ListEmptyComponent={emptyFlatList}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.bubble}
+              onPress={() => {
+                handleSelectExpense(item);
+              }}
+            >
+              <Card containerStyle={styles.cardContainer}>
+                <Card.Title>{item.title}</Card.Title>
+                <Card.Divider />
+                <View style={styles.containerColumn}>
+                  <Text>{item.amount}</Text>
+                  <Text>{item.date}</Text>
+                </View>
+              </Card>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </SafeAreaView>
   );
 };
@@ -100,6 +97,16 @@ const styles = StyleSheet.create({
     width: width,
     backgroundColor: theme.colors.grey,
     paddingTop: 41,
+  },
+  cardContainer: {
+    flex: 1,
+    backgroundColor: "transparent",
+    zIndex: 2,
+  },
+  containerColumn: {
+    width: width,
+    backgroundColor: "transparent",
+    zIndex: 2,
   },
   bubble1: {
     width: width,
@@ -113,18 +120,19 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     backgroundColor: theme.colors.blue,
     margin: 10,
-    padding: 10,
     alignSelf: "center",
     height: height * 0.2,
     borderRadius: 10,
+    zIndex: 1,
   },
   plus: {
-    width: width * 0.16,
+    alignSelf: "flex-end",
+    position:'absolute',
+    right:10,
+    bottom: 20,
     backgroundColor: theme.colors.dark,
     borderRadius: 50,
-    margin: 10,
-    marginBottom: 50,
-    alignContent: "center",
+    zIndex:99999,
   },
   icon: {
     width: width * 0.2,
