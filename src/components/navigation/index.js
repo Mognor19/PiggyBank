@@ -102,7 +102,7 @@ const Navigation = () => {
     if (!state.loading) SplashScreen.hideAsync();
 
   return (
-    <NavigationContainer theme={scheme === "dark" ? CustomDarkTheme : CustomDefaultTheme}>
+    <NavigationContainer theme={scheme === "light" ? CustomDefaultTheme : CustomDarkTheme}>
         {!state.loading && (
         <>
           {state.loggedIn ? (

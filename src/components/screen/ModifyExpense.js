@@ -25,13 +25,38 @@ const ModifyExpense = ({ navigation }) => {
   }, [expensesState.currentExpense]);
 
   const handleSaveExpense = () => {
-    updateExpense(
-      expensesState.currentExpense.id,
-      title,
-      amount,
-      date,
-    );
-    navigation.navigate("ExpenseList")
+    if(amount.includes(".") === false){
+      const moneyValue = amount + ".00"
+      if (!title) {
+        setTitleError(true);
+      } else if (!amount) {
+        setAmountError(true);
+      } else {
+        updateExpense(
+          expensesState.currentExpense.id,
+          title,
+          moneyValue,
+          date,
+        );
+        navigation.navigate("ExpenseList")
+      }
+    }else if(amount.slice(-3).charAt(0) != "."){
+      return setAmountError(true)
+    }else {
+      if (!title) {
+        setTitleError(true);
+      } else if (!amount) {
+        setAmountError(true);
+      } else {
+        updateExpense(
+          expensesState.currentExpense.id,
+          title,
+          amount,
+          date,
+        );
+        navigation.navigate("ExpenseList")
+      }
+    }
   };
 
   const handleVerify = (input) => {
