@@ -95,7 +95,7 @@ const CreateExpense = ({ navigation }) => {
         errorMessage={amountError ? "The value you saved is either wrong or empty." : null}
       />
       <View style={styles.containerRow}>
-        <Text>
+        <Text style={styles.date}>
           Date:{" "}
           {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()}
         </Text>
@@ -170,6 +170,10 @@ const styles = StyleSheet.create({
   input: {
     alignSelf: "center",
     fontSize: 20,
+  },
+  date: {
+    fontSize: 20,
+    color: theme.light.red
   },
 });
 

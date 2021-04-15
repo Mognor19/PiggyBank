@@ -30,7 +30,7 @@ const ExpenseList = ({ navigation }) => {
 
   const emptyFlatList = (
     <View style={styles.emptyExpenses}>
-      <Text>You are free of any dept!</Text>
+      <Text style={styles.empty}>You are free of any dept!</Text>
     </View>
   );
 
@@ -199,6 +199,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: height * 0.2,
     alignSelf: "center",
+    color: theme.light.red
+  },
+  
+  empty: {
+    fontSize: 20,
     color: theme.light.red
   },
 });

@@ -97,7 +97,7 @@ const ModifyExpense = ({ navigation }) => {
       </View>
       <View style={styles.containerRow}>
         <TouchableOpacity style={styles.botton} onPress={handleSaveExpense}>
-          <Text style={styles.text1}>Accept</Text>
+          <Text style={styles.text}>Accept</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.botton}
@@ -105,7 +105,7 @@ const ModifyExpense = ({ navigation }) => {
             navigation.navigate("ExpenseList");
           }}
         >
-          <Text style={styles.text1}>Cancel</Text>
+          <Text style={styles.text}>Cancel</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
     margin: 5,
     alignSelf: "center",
     fontSize: 30,
-    color: theme.light.red
   },
   input: {
     alignSelf: "center",
