@@ -2,6 +2,12 @@
 
 # Piggy Bank
 
+![](https://github.com/JosueAbisaiLopez0930/imagen/blob/master/New%20folder%20(2)/Pagina1.jpeg?raw=true)
+
+<h2>Paleta de Colores<h2>
+
+![](https://github.com/JosueAbisaiLopez0930/imagen/blob/master/New%20folder%20(2)/Paleta%20de%20colores.jpeg?raw=true)
+  
 ## Tecnologías utilizadas
 
 - React native
@@ -13,13 +19,7 @@
 
 <h3>Instalación:</h3><br>
 <code>npm install</code>
-<code href=>npm i react-native-elements --save</code>
-<code>npm i --save react-native-vector-icons</code>
-<code>npm i --save react-native-safe-area-context</code>
-<code>npm install @react-navigation/native</code>
 <code>expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-masked-view/masked-view</code>
-<code>npm install @react-navigation/bottom-tabs</code>
-<code>npm install @react-navigation/stack</code>
 <code>yarn add firebase</code>
 <code>expo install expo-constants</code>
 <br>
