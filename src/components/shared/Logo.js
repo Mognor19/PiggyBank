@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     padding:height*0.06,
     resizeMode: "contain",
     alignSelf:'center',
-    color: theme.light.red
   },
   logoTitle:{
     alignSelf:'center',

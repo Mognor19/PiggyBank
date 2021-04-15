@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: height * 0.2,
     alignSelf: "center",
-    color: theme.light.red,
+    color: theme.light.red
   },
 });
 

@@ -35,7 +35,7 @@ const ModifyExpense = ({ navigation }) => {
   };
 
   const handleVerify = (input) => {
-    if (input === "yitle") {
+    if (input === "title") {
       if (!title) setTitleError(true);
       else setTitleError(false);
     } else if (input === "amount") {
@@ -138,6 +138,13 @@ const styles = StyleSheet.create({
     margin: 5,
     alignSelf: "center",
     fontSize: 30,
+    color: theme.light.red
+  },
+  text: {
+    margin: 5,
+    alignSelf: "center",
+    fontSize: 30,
+    color: theme.light.red
   },
   input: {
     alignSelf: "center",

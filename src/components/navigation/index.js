@@ -23,6 +23,7 @@ import SignupForm from '../forms/SignUpForm';
 import Alert from '../shared/Alert';
 import PopUpMessage from '../shared/PopUpMessage';
 import UserLogo from '../shared/UserLogo';
+import Logo from '../shared/Logo';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -122,6 +123,8 @@ const Navigation = () => {
                 <Stack.Screen name="Alert" component={Alert}/>
                 <Stack.Screen name="PopUpMessage" component={PopUpMessage}/>
                 <Stack.Screen name="UserLogo" component={UserLogo}/>
+                <Stack.Screen name="Logo" component={Logo}/>
+                <Stack.Screen name="CreateExpense" component={CreateExpense}/>
                 
             </Stack.Navigator>
           )}

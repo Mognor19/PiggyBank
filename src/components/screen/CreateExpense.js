@@ -119,7 +119,7 @@ const CreateExpense = ({ navigation }) => {
       </View>
       <View style={styles.containerRow}>
         <TouchableOpacity style={styles.botton} onPress={handleSaveExpense}>
-          <Text style={styles.text1}>Accept</Text>
+          <Text style={styles.text}>Accept</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.botton}
@@ -127,7 +127,7 @@ const CreateExpense = ({ navigation }) => {
             navigation.navigate("ExpenseList");
           }}
         >
-          <Text style={styles.text1}>Cancel</Text>
+          <Text style={styles.text}>Cancel</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: width * 0.8,
     alignSelf: "center",
-    backgroundColor: theme.light.background,
     flexDirection: "row",
   },
   botton: {
@@ -158,6 +157,12 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   text1: {
+    margin: 5,
+    alignSelf: "center",
+    fontSize: 30,
+    color: theme.light.red
+  },
+  text: {
     margin: 5,
     alignSelf: "center",
     fontSize: 30,
