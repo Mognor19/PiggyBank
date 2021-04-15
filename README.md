@@ -1,6 +1,9 @@
 ![](https://github.com/Mognor19/PiggyBank/blob/develop/assets/LogoPiggyBankNoCoin.png?raw=true)
 
 # Piggy Bank
+<p>PiggyBank es una aplicación que permite al usuario poder administrar sus gastos y llevar un registro de los gastos que el ingrese. El usuario tendrá la posibilidad de modificar sus gastos o borrarlos si ya no son necesarios. La aplicación incluirá ciertas acomodaciones para que el usuario pueda maniobrarse en la aplicación de manera intuitiva, así mismo también darle  la facilidad de poder facilitar el uso de la aplicación con opciones como ingreso con sus cuentas de Google.</p>
+
+<h2>Imagenes del Proyecto</h2> 
 
 ![](https://github.com/JosueAbisaiLopez0930/imagen/blob/master/New%20folder%20(2)/imagen4.png?raw=true)
 
