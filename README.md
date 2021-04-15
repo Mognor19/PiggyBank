@@ -13,17 +13,22 @@
 
 <h3>Instalación:</h3><br>
 <code>npm install</code>
-<code>npm i react-native-elements --save</code>
+<code href=>npm i react-native-elements --save</code>
 <code>npm i --save react-native-vector-icons</code>
 <code>npm i --save react-native-safe-area-context</code>
 <code>npm install @react-navigation/native</code>
 <code>expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-masked-view/masked-view</code>
 <code>npm install @react-navigation/bottom-tabs</code>
 <code>npm install @react-navigation/stack</code>
-<code>npm install email-validator</code>
 <code>yarn add firebase</code>
 <code>expo install expo-constants</code>
-<code>expo install expo-google-app-auth</code>
+<br>
+<br>
+<h3>Instalación:</h3><br>
+<code href="https://www.npmjs.com/package/react-native-chart-kity">yarn add react-native-chart-kit</code>
+<code href="https://www.npmjs.com/package/@react-navigation/core">yarn add react-native-svg</code>
+<code href="https://docs.expo.io/versions/latest/sdk/google/">expo install expo-google-app-auth</code>
+<code href="http://github.com/manishsaraan/email-validator">npm install email-validator</code>
 <br>
 <br>
 <h3>Iniciar Expo Metro:<h3><br>
