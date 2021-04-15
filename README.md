@@ -25,10 +25,10 @@
 <br>
 <br>
 <h3>Instalación:</h3><br>
-<code href="https://www.npmjs.com/package/react-native-chart-kity">yarn add react-native-chart-kit</code>
-<code href="https://www.npmjs.com/package/@react-navigation/core">yarn add react-native-svg</code>
-<code href="https://docs.expo.io/versions/latest/sdk/google/">expo install expo-google-app-auth</code>
-<code href="http://github.com/manishsaraan/email-validator">npm install email-validator</code>
+<code><a href="https://www.npmjs.com/package/react-native-chart-kity">yarn add react-native-chart-kit</a></code>
+<code> <a href="https://www.npmjs.com/package/@react-navigation/core">yarn add react-native-svg</a></code>
+<code> <a href="https://docs.expo.io/versions/latest/sdk/google/">expo install expo-google-app-auth</a></code>
+<code> <a href="http://github.com/manishsaraan/email-validator">npm install email-validator</a></code>
 <br>
 <br>
 <h3>Iniciar Expo Metro:<h3><br>
