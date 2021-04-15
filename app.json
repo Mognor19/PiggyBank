@@ -25,7 +25,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#F3DFA2"
       },
-      "userInterfaceStyle": "automatic"
+      "userInterfaceStyle": "automatic",
+      "package": "com.anteiku.PiggyBank"
     },
     "web": {
       "favicon": "./assets/favicon.png"
