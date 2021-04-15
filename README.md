@@ -2,11 +2,13 @@
 
 # Piggy Bank
 
-![](https://github.com/JosueAbisaiLopez0930/imagen/blob/master/New%20folder%20(2)/Pagina1.jpeg?raw=true)
+![](https://github.com/JosueAbisaiLopez0930/imagen/blob/master/New%20folder%20(2)/imagen4.png?raw=true)
+
 
 <h2>Paleta de Colores<h2>
 
-![](https://github.com/JosueAbisaiLopez0930/imagen/blob/master/New%20folder%20(2)/Paleta%20de%20colores.jpeg?raw=true)
+![](https://github.com/JosueAbisaiLopez0930/imagen/blob/master/New%20folder%20(2)/Paleta%20de%20colores.jpeg?raw=true)  
+
   
 ## Tecnologías utilizadas
 
